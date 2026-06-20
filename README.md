@@ -1,110 +1,166 @@
-# Netflix Inventory Management System
+# Netflix CLI Content Management System
 
-A Command Line Interface (CLI) based Netflix Inventory Management System developed in C++.
-
-## Overview
-
-This project simulates a Netflix-style content inventory management platform where administrators can manage movies, TV shows, and user information through a terminal-based interface.
-
-The system provides functionality for content management, user management, authentication, and inventory tracking using file handling and object-oriented programming concepts.
+A command-line application built in C++ that simulates a Netflix-style content platform. The system allows users to browse content, manage watchlists, rent or purchase movies and TV shows, and receive simple genre-based recommendations. User and content data are stored using file-based persistence.
 
 ## Features
 
-### Authentication
-- User Login
-- Admin Login
-- Password Security and Validation
+### User Authentication
+
+* User registration and login
+* Admin and user roles
+* Password hashing and authentication
 
 ### Content Management
-- Add New Content
-- View Available Content
-- Search Content
-- Manage Movies
-- Manage TV Shows
 
-### User Management
-- Create Users
-- View User Details
-- User Data Storage
+* Add and manage movies
+* Add and manage TV shows
+* Browse all available content
+* Search content by title
+* Search content by genre
 
-### Inventory Management
-- Track Available Content
-- Maintain Content Records
-- File-Based Data Persistence
+### User Features
+
+* Rent content
+* Purchase content
+* Return rented content
+* View rented and purchased content
+* Watchlist management
+* Watch history tracking
+
+### Recommendation System
+
+* Tracks user viewing preferences
+* Provides genre-based content recommendations
+
+### Rating System
+
+* Users can rate content
+* Average ratings are calculated
+* View top-rated content
+
+### Data Persistence
+
+* User data stored in text files
+* Inventory stored in files
+* Data remains available across sessions
+
+---
+
+## Technologies Used
+
+* C++
+* Object-Oriented Programming (OOP)
+* File Handling
+* STL (Vectors, Maps, Algorithms)
+* Git & GitHub
+* Docker
+
+---
+
+## OOP Concepts Applied
+
+* Encapsulation
+* Inheritance
+* Abstraction
+* Polymorphism
+* Modular Design
+
+---
 
 ## Project Structure
 
-```
+```text
 Netflix-Inventory-System/
 │
-├── src/
 ├── include/
 │   ├── content.h
 │   ├── movie.h
 │   ├── tvshows.h
-│   ├── user.h
 │   ├── inventory.h
+│   ├── user.h
 │   ├── SecurityUtils.h
 │   └── UserUtils.h
 │
+├── src/
+│   ├── main.cpp
+│   └── SecurityUtils.cpp
+│
 ├── users/
-├── data/
-├── main.cpp
-├── SecurityUtils.cpp
+├── inventory.txt
 ├── Dockerfile
 └── README.md
 ```
 
-## Technologies Used
-
-- C++
-- Object-Oriented Programming (OOP)
-- File Handling
-- STL (Standard Template Library)
-- Command Line Interface (CLI)
-
-## Concepts Implemented
-
-- Classes and Objects
-- Inheritance
-- Encapsulation
-- File I/O
-- Data Persistence
-- Authentication System
-- Modular Programming
+---
 
 ## How to Run
 
 ### Compile
 
 ```bash
-g++ main.cpp SecurityUtils.cpp -o netflix
+g++ src/main.cpp src/SecurityUtils.cpp -I include -o netflix
 ```
 
-### Execute
+### Run
+
+#### Windows
+
+```bash
+.\netflix.exe
+```
+
+#### Linux / macOS
 
 ```bash
 ./netflix
 ```
 
-For Windows:
+---
 
-```bash
-netflix.exe
-```
+## Example Workflow
+
+1. Sign up or log in.
+2. Browse available content.
+3. Search by title or genre.
+4. Rent or purchase movies and TV shows.
+5. Add content to your watchlist.
+6. View watch history.
+7. Receive recommendations based on viewing preferences.
+8. Rate content and explore top-rated titles.
+
+---
 
 ## Future Improvements
 
-- Database Integration
-- GUI Interface
-- Content Recommendation System
-- Advanced Search Filters
-- User Watch History
+* Database integration (MySQL/PostgreSQL)
+* Better recommendation algorithms
+* Content reviews and comments
+* Admin analytics dashboard
+* Graphical user interface (GUI)
+* REST API support
+
+---
+
+## What I Learned
+
+This project helped me gain hands-on experience with:
+
+* Designing object-oriented systems in C++
+* Managing data using file handling
+* Building authentication workflows
+* Working with modular project structures
+* Using Git and GitHub for version control
+
+---
 
 ## Author
 
-Vedant
+Vedant Lohare
+
+GitHub: https://github.com/vedantlohare
+
+---
 
 ## License
 
-This project was developed for academic and learning purposes.
+This project was developed for learning and educational purposes.
