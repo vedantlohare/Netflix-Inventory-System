@@ -1,0 +1,41 @@
+Movie|The Matrix|Sci-Fi|8.7|0|0|136|4.99|14.99
+Movie|Inception|Sci-Fi|8.8|0|0|148|5.99|15.99
+Movie|Interstellar|Adventure|8.6|0|0|169|6.49|16.99
+Movie|The Dark Knight|Action|9.0|0|0|152|5.49|14.49
+Movie|Pulp Fiction|Crime|8.9|0|0|154|4.49|13.99
+Movie|The Godfather|Crime|9.2|0|0|175|5.99|15.49
+Movie|The Shawshank Redemption|Drama|9.3|0|0|142|5.99|14.99
+Movie|Forrest Gump|Drama|8.8|0|0|144|4.99|13.49
+Movie|Avengers: Endgame|Action|8.4|0|0|181|6.99|17.99
+Movie|Parasite|Thriller|8.6|0|0|132|5.49|14.49
+Movie|La La Land|Romance|8.0|0|0|128|3.99|11.99
+Movie|Spirited Away|Animation|8.6|0|0|125|4.49|12.49
+Movie|The Lion King|Animation|8.5|0|0|88|3.99|9.99
+Movie|Joker|Drama|8.4|0|0|122|5.99|13.99
+Movie|Tenet|Sci-Fi|7.5|0|0|150|4.99|12.99
+Movie|Gladiator|Action|8.5|0|0|155|5.49|13.99
+Movie|Django Unchained|Western|8.4|0|0|165|4.99|13.49
+Movie|Titanic|Romance|7.8|0|0|195|4.49|12.49
+Movie|The Social Network|Drama|7.7|0|0|120|3.99|10.99
+Movie|1917|War|8.3|0|0|119|4.99|13.99
+
+TVShow|Stranger Things|Horror|8.9|0|0|4|8|3.99|12.99
+TVShow|Breaking Bad|Crime|9.5|0|0|5|13|4.99|14.99
+TVShow|Friends|Comedy|8.9|0|0|10|24|3.49|9.99
+TVShow|Game of Thrones|Fantasy|9.3|0|0|8|10|5.99|18.99
+TVShow|The Office|Comedy|8.8|0|0|9|22|3.49|9.99
+TVShow|Money Heist|Thriller|8.2|0|0|5|10|4.99|13.99
+TVShow|The Mandalorian|Sci-Fi|8.7|0|0|3|8|4.99|12.99
+TVShow|Sherlock|Mystery|9.1|0|0|4|3|3.99|11.99
+TVShow|Dark|Sci-Fi|8.8|0|0|3|8|4.99|12.49
+TVShow|Narcos|Crime|8.8|0|0|3|10|4.49|11.99
+TVShow|Brooklyn Nine-Nine|Comedy|8.4|0|0|8|20|3.49|9.49
+TVShow|Black Mirror|Sci-Fi|8.8|0|0|5|6|4.99|11.99
+TVShow|The Boys|Superhero|8.7|0|0|3|8|4.49|12.49
+TVShow|Peaky Blinders|Drama|8.8|0|0|6|6|4.49|13.99
+TVShow|The Witcher|Fantasy|8.1|0|0|2|8|4.99|13.49
+TVShow|Lucifer|Fantasy|8.2|0|0|6|10|3.99|10.99
+TVShow|How I Met Your Mother|Comedy|8.3|0|0|9|22|3.49|9.99
+TVShow|Rick and Morty|Animation|9.2|0|0|5|10|3.99|11.99
+TVShow|House of the Dragon|Fantasy|8.5|0|0|1|10|5.99|14.99
+TVShow|Squid Game|Thriller|8.0|0|0|1|9|4.49|12.49
