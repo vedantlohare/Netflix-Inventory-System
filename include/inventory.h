@@ -59,6 +59,83 @@ public:
         }
         file.close();
     }
+    void searchByGenre(const string& genre)
+    {
+        bool found = false;
+
+        for(auto c : contents)
+        {
+            if(c->getGenre() == genre)
+            {
+                c->display();
+                found = true;
+            }
+        }
+
+        if(!found)
+            cout << "No content found.\n";
+    }
+
+    void recommendByGenre(const string& genre)
+    {
+        if(genre.empty())
+        {
+            cout << "No watch history available.\n";
+            return;
+        }
+
+        cout << "\nRECOMMENDED FOR YOU\n";
+
+        for(auto c : contents)
+        {
+            if(c->getGenre() == genre)
+            {
+                c->display();
+            }
+        }
+    }
+
+    void displayTopRated()
+    {
+        cout << "\nTOP RATED CONTENT\n";
+
+        bool found = false;
+
+        for(auto c : contents)
+        {
+            if(c->getAverageRating() >= 4.0)
+            {
+                c->display();
+
+                cout
+                    << "Average User Rating: "
+                    << c->getAverageRating()
+                    << "\n\n";
+
+                found = true;
+            }
+        }
+
+        if(!found)
+            cout << "No highly rated content.\n";
+    }
+
+    void searchByRating(float minRating)
+    {
+        bool found = false;
+
+        for(auto c : contents)
+        {
+            if(c->getRating() >= minRating)
+            {
+                c->display();
+                found = true;
+            }
+        }
+
+        if(!found)
+            cout << "No matching content.\n";
+    }
 };
 
 #endif

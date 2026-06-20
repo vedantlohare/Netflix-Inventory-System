@@ -14,7 +14,23 @@ void userMenu(User* user, Inventory& inventory) {
     int choice;
     while (true) {
         cout << "\nUSER MENU - " << user->getUsername() << "\n";
-        cout << "1. Browse all content\n2. Search by title\n3. Rent\n4. Purchase\n5. Return\n6. View rented\n7. View purchased\n8. Charges due\n9. Logout\nChoice: ";
+        cout << "1. Browse all content\n";
+        cout << "2. Search by title\n";
+        cout << "3. Search by genre\n";
+        cout << "4. Rent\n";
+        cout << "5. Purchase\n";
+        cout << "6. Return\n";
+        cout << "7. Add to watchlist\n";
+        cout << "8. View watchlist\n";
+        cout << "9. View watch history\n";
+        cout << "10. Recommendations\n";
+        cout << "11. Add Rating\n";
+        cout << "12. Top rated content\n";
+        cout << "13. View rented\n";
+        cout << "14. View purchased\n";
+        cout << "15. Charges due\n";
+        cout << "16. Logout\n";
+        cout << "Choice: ";
         if(!(cin >> choice))
         {
             cin.clear();
@@ -35,34 +51,100 @@ void userMenu(User* user, Inventory& inventory) {
             Content* c = inventory.searchByTitle(title);
             if (c) c->display();
             else cout << "Not found.\n";
-        } else if (choice == 3) {
+        } else if(choice == 3)
+            {
+                string genre;
+
+                cout << "Enter genre: ";
+
+                getline(cin, genre);
+
+                inventory.searchByGenre(genre);
+            }else if (choice == 4) {
             string title;
             cout << "Enter title to rent: ";
             getline(cin, title);
             Content* c = inventory.searchByTitle(title);
             if (c) user->rent(c);
             else cout << "Not found.\n";
-        } else if (choice == 4) {
+        } else if (choice == 5) {
             string title;
             cout << "Enter title to purchase: ";
             getline(cin, title);
             Content* c = inventory.searchByTitle(title);
             if (c) user->purchase(c);
             else cout << "Not found.\n";
-        } else if (choice == 5) {
+        } else if (choice == 6) {
             string title;
             cout << "Enter title to return: ";
             getline(cin, title);
             Content* c = inventory.searchByTitle(title);
             if (c) user->returnItem(c);
             else cout << "Not found.\n";
-        } else if (choice == 6) {
+        } else if(choice == 7)
+        {
+            string title;
+
+            cout << "Enter title: ";
+
+            getline(cin, title);
+
+            Content* c =
+                inventory.searchByTitle(title);
+
+            if(c)
+                user->addToWatchlist(c);
+            else
+                cout << "Not found.\n";
+        }else if(choice == 8)
+        {
+            user->viewWatchlist();
+        }else if(choice == 9)
+        {
+            user->viewWatchHistory();
+        }else if(choice == 10)
+        {
+            inventory.recommendByGenre(
+                user->getFavouriteGenre()
+            );
+        }else if(choice == 11)
+        {
+            string title;
+
+            cout << "Enter title: ";
+
+            getline(cin, title);
+
+            Content* c =
+                inventory.searchByTitle(title);
+
+            if(!c)
+            {
+                cout << "Not found.\n";
+                continue;
+            }
+
+            int rating;
+
+            cout << "Enter rating (1-5): ";
+
+            cin >> rating;
+
+            cin.ignore();
+
+            c->addRating(rating);
+
+            cout << "Rating submitted.\n";
+        }else if(choice == 12)
+        {
+            inventory.displayTopRated();
+        }else if (choice == 13) {
             user->viewRented();
-        } else if (choice == 7) {
+        } else if (choice == 14) {
             user->viewPurchased();
-        } else if (choice == 8) {
+        } else if (choice == 15) {
             user->viewCharges();
-        } else if (choice == 9) {
+        } else if (choice == 16) {
             saveUser(user);
             cout << "Logged out.\n";
             break;

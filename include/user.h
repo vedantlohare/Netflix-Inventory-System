@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -20,6 +21,10 @@ private:
     float charges_due;
     string passwordHash;
     bool isAdmin;
+    vector<string> watchlist_titles;
+    vector<string> watch_history;
+    string favouriteGenre;
+    map<string,int> genreCount;
 
 public:
     // Constructor
@@ -30,6 +35,7 @@ public:
     float getChargesDue() const { return charges_due; }
     string getPasswordHash() const { return passwordHash;}
     bool getIsAdmin() const { return isAdmin;}
+    string getFavouriteGenre() const {return favouriteGenre;}
 
     // Rent content
     void rent(Content* item) {
@@ -53,7 +59,18 @@ public:
             cout << "You already purchased this item.\n";
             return;
         }
-        
+        genreCount[item->getGenre()]++;
+
+        if(
+            favouriteGenre.empty() ||
+            genreCount[item->getGenre()] >
+            genreCount[favouriteGenre]
+        )
+        {
+            favouriteGenre = item->getGenre();
+        }
+
+        watch_history.push_back(item->getTitle());
         rented_titles.push_back(item->getTitle());
         charges_due += item->getRentCost();
         cout << "Rented successfully. $" << item->getRentCost() << " added to charges.\n";
@@ -82,7 +99,18 @@ public:
             cout << "You already rented this item.\n";
             return;
         }
-        
+        genreCount[item->getGenre()]++;
+
+        if(
+            favouriteGenre.empty() ||
+            genreCount[item->getGenre()] >
+            genreCount[favouriteGenre]
+        )
+        {
+            favouriteGenre = item->getGenre();
+        }
+
+        watch_history.push_back(item->getTitle());
         purchased_titles.push_back(item->getTitle());
         charges_due += item->getPurchaseCost();
         cout << "Purchased successfully. $" << item->getPurchaseCost() << " added to charges.\n";
@@ -107,6 +135,21 @@ public:
         cout << "Returned successfully.\n";
     }
 
+    //View watch history
+    void viewWatchHistory() const
+    {
+        cout << "\nWATCH HISTORY\n";
+
+        if(watch_history.empty())
+        {
+            cout << "No history.\n";
+            return;
+        }
+
+        for(const auto& item : watch_history)
+            cout << "- " << item << endl;
+    }
+
     // View currently rented titles
     void viewRented() const {
         cout << "Rented Items:\n";
@@ -128,6 +171,37 @@ public:
                 cout << "- " << title << endl;
         }
     }
+    // Add to watchlist feature
+    void addToWatchlist(Content* item)
+    {
+        if(find(
+            watchlist_titles.begin(),
+            watchlist_titles.end(),
+            item->getTitle()
+        ) != watchlist_titles.end())
+        {
+            cout << "Already in watchlist.\n";
+            return;
+        }
+
+        watchlist_titles.push_back(item->getTitle());
+
+        cout << "Added to watchlist.\n";
+    }
+    //View watchlist
+    void viewWatchlist() const
+    {
+        cout << "\nWATCHLIST\n";
+
+        if(watchlist_titles.empty())
+        {
+            cout << "Empty\n";
+            return;
+        }
+
+        for(const auto& item : watchlist_titles)
+            cout << "- " << item << endl;
+    }
 
     // View due charges
     void viewCharges() const {
@@ -145,6 +219,19 @@ public:
 
         for (const auto& p : purchased_titles)
             ss << p << ",";
+
+        ss << "|";
+
+        for(const auto& w : watchlist_titles)
+            ss << w << ",";
+
+        ss << "|";
+
+        for(const auto& h : watch_history)
+            ss << h << ",";
+
+        ss << "|" << favouriteGenre;
+
         return ss.str();
     }
 
@@ -159,6 +246,9 @@ public:
         string charge_str;
         string rented_str;
         string purchased_str;
+        string watchlist_str;
+        string history_str;
+        string favouriteGenreStr;
 
         getline(ss, uname, '|');
         getline(ss, passHash, '|');
@@ -166,6 +256,9 @@ public:
         getline(ss, charge_str, '|');
         getline(ss, rented_str, '|');
         getline(ss, purchased_str, '|');
+        getline(ss, watchlist_str, '|');
+        getline(ss, history_str, '|');
+        getline(ss, favouriteGenreStr, '|');
 
         bool admin = (adminStr == "1");
 
@@ -202,6 +295,23 @@ public:
             if(!title.empty())
                 u->purchased_titles.push_back(title);
         }
+        stringstream watchlist_stream(watchlist_str);
+
+        while(getline(watchlist_stream, title, ','))
+        {
+            if(!title.empty())
+                u->watchlist_titles.push_back(title);
+        }
+
+        stringstream history_stream(history_str);
+
+        while(getline(history_stream, title, ','))
+        {
+            if(!title.empty())
+                u->watch_history.push_back(title);
+        }
+
+        u->favouriteGenre = favouriteGenreStr;
 
         return u;
     }
