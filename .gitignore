@@ -1,0 +1,12 @@
+# VS Code
+.vscode/
+
+# Build artifacts
+*.exe
+*.o
+*.obj
+*.out
+
+# OS files
+Thumbs.db
+Desktop.ini
